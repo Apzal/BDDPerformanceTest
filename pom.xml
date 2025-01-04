@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>apzal.bahin</groupId>
+    <artifactId>performancetesting</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.jmeter/ApacheJMeter_core -->
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_core</artifactId>
+            <version>5.6.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.jmeter/ApacheJMeter_http -->
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_http</artifactId>
+            <version>5.6.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/kg.apc/jmeter-plugins-extras-libs -->
+        <dependency>
+            <groupId>kg.apc</groupId>
+            <artifactId>jmeter-plugins-extras-libs</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.20.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.20.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.24.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.24.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.27.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.18.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+
+            <!--            <plugin>-->
+            <!--                <groupId>com.lazerycode.jmeter</groupId>-->
+            <!--                <artifactId>jmeter-maven-plugin</artifactId>-->
+            <!--                <version>2.5.1</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>jmeter-tests</id>-->
+            <!--                        <phase>verify</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>jmeter</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <configuration>-->
+            <!--                    <jMeterProcessJVMSettings>-->
+            <!--                        <xms>1024</xms>-->
+            <!--                        <xmx>1024</xmx>-->
+            <!--                        <arguments>-->
+            <!--                            <argument>-Xprof</argument>-->
+            <!--                            <argument>-Xfuture</argument>-->
+            <!--                        </arguments>-->
+            <!--                    </jMeterProcessJVMSettings>-->
+            <!--                    <propertiesUser>-->
+            <!--                        <users>${users}</users>-->
+            <!--                        <rampup>${rampup}</rampup>-->
+            <!--                        <loop>${loop}</loop>-->
+            <!--                    </propertiesUser>-->
+            <!--                    <testFilesIncluded>-->
+            <!--                        <jMeterTestFile>${jMeterTestFile}</jMeterTestFile>-->
+            <!--                    </testFilesIncluded>-->
+            <!--                    <testResultsTimestamp>false</testResultsTimestamp>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>de.codecentric</groupId>-->
+            <!--                <artifactId>jmeter-graph-maven-plugin</artifactId>-->
+            <!--                <version>0.1.0</version>-->
+            <!--                <configuration>-->
+            <!--                    <inputFile>${project.build.directory}/jmeter/results/jmetereg_HTTP_Non_GUI_Mode_Runtime.jtl</inputFile>-->
+            <!--                    <graphs>-->
+            <!--                        <graph>-->
+            <!--                            <pluginType>ResponseTimesOverTime</pluginType>-->
+            <!--                            <width>800</width>-->
+            <!--                            <height>600</height>-->
+            <!--                            <outputFile>${project.build.directory}/jmeter/results/jmetereg_HTTP_Non_GUI_Mode_Runtime.png</outputFile>-->
+            <!--                        </graph>-->
+            <!--                    </graphs>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
