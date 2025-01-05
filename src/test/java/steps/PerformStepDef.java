@@ -26,6 +26,8 @@ public class PerformStepDef {
     @And("I create a {string} and {string} file for request body with {string} data in iteration {string}")
     public void iCreateAAndFileForRequestBodyWithDataInIteration(String fileName1, String fileName2, String dataRowCount, String iteration) {
         CSVGenerator.generateCSV(fileName1, fileName2, Integer.parseInt(dataRowCount), iteration);
+        XMLHelper.updateElementAttribute(XMLHelper.XPATH.HTTPTestName,jmxFileName,0, "testname",
+                "Iteration_"+iteration+"_"+jmxFileName.replaceAll(".jmx",""));
         XMLHelper.updateElementText(XMLHelper.XPATH.CSVFile,jmxFileName,0,
                 Constants.TEST_DATA_FILE_PATH +fileName1+iteration+".csv");
     }
@@ -39,11 +41,15 @@ public class PerformStepDef {
     public void iUseTheFileForRequestBodyInIteration(String fileName, String iteration) {
         XMLHelper.updateElementText(XMLHelper.XPATH.CSVFile,jmxFileName,0,
                 Constants.TEST_DATA_FILE_PATH +fileName+iteration+".csv");
+        XMLHelper.updateElementAttribute(XMLHelper.XPATH.HTTPTestName,jmxFileName,0, "testname",
+                "Iteration_"+iteration+"_"+jmxFileName.replaceAll(".jmx",""));
     }
 
-    @And("I use the {string} file for request body")
-    public void iUseTheFileForRequestBody(String fileName) {
+    @And("I use the {string} file for request body for Iteration {string}")
+    public void iUseTheFileForRequestBodyForIteration(String fileName, String iteration) {
         XMLHelper.updateElementText(XMLHelper.XPATH.CSVFile,jmxFileName,0,
                 Constants.TEST_DATA_FILE_PATH +fileName+".csv");
+        XMLHelper.updateElementAttribute(XMLHelper.XPATH.HTTPTestName,jmxFileName,0, "testname",
+                "Iteration_"+iteration+"_"+jmxFileName.replaceAll(".jmx",""));
     }
 }

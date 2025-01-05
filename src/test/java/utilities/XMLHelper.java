@@ -3,6 +3,8 @@ package utilities;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
@@ -30,7 +32,8 @@ public class XMLHelper {
         Domain("//HTTPSamplerProxy/stringProp[@name='HTTPSampler.domain']"),
         Port("//HTTPSamplerProxy/stringProp[@name='HTTPSampler.port']"),
         Protocol("//HTTPSamplerProxy/stringProp[@name='HTTPSampler.protocol']"),
-        CSVFile("//CSVDataSet/stringProp[@name='filename']");
+        CSVFile("//CSVDataSet/stringProp[@name='filename']"),
+        HTTPTestName("//HTTPSamplerProxy");
 
         private final String value;
 
@@ -51,6 +54,26 @@ public class XMLHelper {
                 readPropertyFile.readProperty("domain"));
         XMLHelper.updateElementText(XMLHelper.XPATH.Port,fileName,0,
                 readPropertyFile.readProperty("port"));
+    }
+    public static void updateElementAttribute(XPATH xpath, String fileName, int itemNo, String attributeName,String attributeValue){
+        try {
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(
+                    new InputSource(JMX_DIR_PATH + fileName));
+            XPath xPath = XPathFactory.newInstance().newXPath();
+            NodeList nodes = (NodeList) xPath.evaluate(xpath.getValue(), doc,
+                    XPathConstants.NODESET);
+            if (nodes != null && nodes.getLength() > itemNo) {
+                Element element = (Element)nodes.item(itemNo);
+                element.setAttribute(attributeName,attributeValue);
+            }
+            Transformer xformer = TransformerFactory.newInstance().newTransformer();
+            xformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            StreamResult result = new StreamResult(new File( JMX_DIR_PATH +fileName));
+            xformer.transform(new DOMSource(doc), result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e.getMessage());
+        }
     }
     public static void updateElementText(XPATH xpath, String fileName, int itemNo, String newData) {
         try {
