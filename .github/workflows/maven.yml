@@ -19,6 +19,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
@@ -27,6 +28,14 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+
+#    - uses: actions/checkout@v3  // Checkout FlaskApp Repository
+#      with:
+#          repository: <owner>/<repo> # Replace with the repository you want to check out
+#          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }} # Ensure this token has access to the repo
+#          path: other-repo # Specify a folder to clone the other repository into
+
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
