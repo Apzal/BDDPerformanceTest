@@ -46,28 +46,4 @@ public class CSVGenerator {
             logger.error(e.getMessage());
         }
     }
-
-    public static void generateCSV1(String fileName, int numEntries) {
-        fileName = TEST_DATA_FILE_PATH + fileName;
-        try (FileWriter writer = new FileWriter(fileName, false)) {
-
-            for (int i = 0; i < numEntries; i++) {
-                String fullName = randomGenerator.getRandomFullName();
-                String userName = randomGenerator.getRandomUserName();
-                String email = randomGenerator.getRandomEmail();
-                String password = randomGenerator.getRandomPassword();
-                String phone = randomGenerator.getRandomMobileNumber();
-
-                writer.append(fullName).append(",")
-                        .append(userName).append(",")
-                        .append(email).append(",")
-                        .append(password).append(",")
-                        .append(phone).append("\n");
-            }
-            logger.info("Successfully created {} csv file",fileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-            logger.error(e.getMessage());
-        }
-    }
 }

@@ -36,7 +36,7 @@ public class JmeterEngine {
     private void initializeProperties(){
         String jmeterHomePath = JMETER_HOME_PATH;
         jmeter = new StandardJMeterEngine();
-        JMeterUtils.loadJMeterProperties(jmeterHomePath+"\\bin\\jmeter.properties");
+        JMeterUtils.loadJMeterProperties(jmeterHomePath+"/bin/jmeter.properties");
         JMeterUtils.setJMeterHome(jmeterHomePath);
         JMeterUtils.initLocale();
         try {
